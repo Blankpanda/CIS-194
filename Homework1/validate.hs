@@ -47,7 +47,7 @@ toDigitsRev n
 -- doubles every other element in a list
 doubleEveryOther []       = []
 doubleEveryOther (x:[])   = [x]
-doubleEveryOther (y:x:xs) = (y * 2) : doubleEveryOther (xs ++ (toDigits x))
+doubleEveryOther (y:x:xs) = (y * 2) : (x : []) ++ doubleEveryOther xs
 
 -- sums an expanded list
 sumDigits [] = 0
