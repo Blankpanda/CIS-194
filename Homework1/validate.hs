@@ -46,8 +46,8 @@ toDigitsRev n
 
 -- doubles every other element in a list
 doubleEveryOther []       = []
-doubleEveryOther (x:[])   = [x]
-doubleEveryOther (y:x:xs) = (y * 2) : (x : []) ++ doubleEveryOther xs
+doubleEveryOther (x:[])   = [ 2 * x]
+doubleEveryOther (y:x:xs) = (2*y):x:(doubleEveryOther xs)
 
 -- sums an expanded list
 sumDigits [] = 0
@@ -56,9 +56,5 @@ sumDigits n = sumList ((expandDigits n))
 
 
 main = do
-  let n = toDigits 1234
-  let z = toDigitsRev 1234
-  let t = sumList [10,15,5,1]
-  print n
-  print z
+  let t = doubleEveryOther [5,1,5,5]
   print t
