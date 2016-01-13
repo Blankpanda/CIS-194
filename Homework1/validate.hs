@@ -5,11 +5,13 @@ toDigits :: Integer -> [Integer]
 toDigitsRev :: Integer -> [Integer]
 doubleEveryOther :: [Integer] -> [Integer]
 sumDigits :: [Integer] -> Integer
+validate :: Integer -> Integer
 
 -- helpers
 reverseInt :: Integer -> Integer
 sumList :: [Integer] -> Integer
 expandDigits :: [Integer] -> [Integer]
+
 
 -- reverses an integers order.
 reverseInt 0 = 0
@@ -53,8 +55,11 @@ doubleEveryOther (y:x:xs) = (2*y):x:(doubleEveryOther xs)
 sumDigits [] = 0
 sumDigits n = sumList ((expandDigits n))
 
-
+-- validates credit card
+validate n
+  | (sumDigits ( doubleEveryOther ( toDigits n )) `mod` 10 == 0 = True
+  | otherwise                                                   = False
 
 main = do
-  let t = doubleEveryOther [5,1,5,5]
+  let t = validate 4012888888881881
   print t
